@@ -2,7 +2,7 @@ from tkinter import *
 from random import randint 
 
 root = Tk()
-root.title('Codemy.com - Strong Password Generator')
+root.title('EPaC - Strong Password Generator')
 # root.iconbitmap('C:\Users\hp\OneDrive - Universiti Sains Malaysia\Documents\GitHub\EPaC-tools\7')
 # root.geometry("500X200")
 
@@ -35,7 +35,7 @@ def clipper():
     root.clipboard_append(pw_entry.get())
 
 # label frame
-lf = LabelFrame(root, text="how many characters?")
+lf = LabelFrame(root, text="How many characters?")
 lf.pack(pady=20)
 
 # create entry box to designate Number of characters
