@@ -13,7 +13,7 @@ def extractfile(zfile,password):
 def main():
     filename=input("Enter file name(please include extension which is .zip at the end of the file name): ")
     zfile=zipfile.ZipFile(filename)
-    passfile= open('PasswordList.zip')
+    passfile= open('PasswordList.txt')
     for line in passfile.readlines():
         password = line.strip('\n')
         guess=extractfile(zfile,password)
