@@ -7,7 +7,7 @@ def extractfile(zfile,password):
         zfile.extractall(pwd=bytes(password, 'utf-8'))
         return password
     except:
-        print('wrong password')
+        print('cannot find the password')
         return
     
 def main():
@@ -18,10 +18,8 @@ def main():
         password = line.strip('\n')
         guess=extractfile(zfile,password)
         if guess:
-            print('Password = ' + password)
+            print('Your password = ' + password)
             break
-    
+        
 if __name__=='__main__':
     main()
-
-
