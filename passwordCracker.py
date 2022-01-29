@@ -24,16 +24,16 @@ def extractfile(zfile,password):
         print('Wrong password')
         return
 
-def browsefile():
+# def browsefile():
     
-    # open button
-    open_button = ttk.Button(
-        root,
-        text='Open a File',
-        command=browsefile
-    )
+#     # open button
+#     open_button = ttk.Button(
+#         root,
+#         text='Open a File',
+#         command=browsefile
+#     )
 
-    open_button.pack(expand=True)
+#     open_button.pack(expand=True)
        
 def main():
     #Label frame
@@ -41,7 +41,7 @@ def main():
                     "Please include extension which is .zip"
                  " at the end of the file name): ")
     lf.pack(pady=20)
-    filename=browsefile()
+    #filename=browsefile()
     # show the open file dialog
     filetypes = (
         ('zip files', '*.zip'),
@@ -67,11 +67,11 @@ def main():
             pswd.pack(pady=20)
             #Entry box to display output password that has been generated
             pswd.insert(0,password)
-            #Button to display password
-            button_dis= Button(root,text="Go",command=extractfile(zfile,password))
-            button_dis.config(width=20,height=3,font=("Arial",10),bg="light blue")
-            button_dis.pack(pady=5)
-            break
+            # #Button to display password
+            # button_dis= Button(root,text="Go",command=extractfile(zfile,password))
+            # button_dis.config(width=20,height=3,font=("Arial",10),bg="light blue")
+            # button_dis.pack(pady=5)
+            # break
         
 if __name__=='__main__':
     main()
