@@ -11,7 +11,7 @@ def extractfile(zfile,password):
         return
     
 def main():
-    filename=input("Enter file name(please include extension which is .zip at the end of the file name): ")
+    filename=input("Enter the locked zip file name(please include extension which is .zip at the end of the file name): ")
     zfile=zipfile.ZipFile(filename)
     passfile= open('PasswordList.txt')
     for line in passfile.readlines():
