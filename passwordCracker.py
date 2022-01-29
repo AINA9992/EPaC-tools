@@ -9,6 +9,7 @@ import random
 import string
 
 root = Tk()
+
 root.geometry("1000x500")
 
 l_name = Label(root,text="PASSWORD CRACKER\n",font=("Arial",30))
@@ -24,7 +25,7 @@ def extractfile(zfile,password):
         print('Wrong password')
         return
 
-def main():
+def checkpass():
     #Label frame
     lf = LabelFrame(root,text="Enter the locked zip file name: \n"
                     "Please include extension which is .zip"
@@ -58,7 +59,7 @@ def main():
             pswd.insert(0,password)
         
 if __name__=='__main__':
-    main()
+    checkpass()
     
 #Execute Tkinter
 root.mainloop()
