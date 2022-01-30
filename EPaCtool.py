@@ -9,7 +9,8 @@ import string
 from random import randint
 
 def menu():     
-
+    root.title('EPaC - Easy Password Cracker MENU')
+    
     #Strong password generator
     def genPw():
 
@@ -205,7 +206,6 @@ def menu():
     button_genPw.pack(pady=5)
 
 root=Tk()
-root.title('EPaC - Easy Password Cracker MENU')
 root.geometry("1000x500")
 #Call menu function
 menu()
