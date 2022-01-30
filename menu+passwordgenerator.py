@@ -16,6 +16,8 @@ def menu():
     #Strong password generator
     def genPw():
 
+        root.title('EPaC - Strong Password Generator')
+
         #Generate random password
         def new_rand():
             #Clear entry box
@@ -92,6 +94,7 @@ def menu():
     # PASSWORD CRACKER #
     ####################
     def passwordCracker():
+        root.title('EPaC - Password Cracker')
         def direction():
             dir.config(text = "This password cracking tool uses dictionary attack\n"
                     "It will only find password which is in the PassWordList.txt")
@@ -201,6 +204,7 @@ def menu():
     button_genPw.pack(pady=5)
 
 root=Tk()
+root.title('EPaC - Easy Password Cracker MENU')
 root.geometry("1000x500")
 #Call menu function
 menu()
