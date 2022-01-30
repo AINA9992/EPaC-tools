@@ -7,8 +7,6 @@ import zipfile
 import hashlib
 import random
 import string
-# from tkinter import *
-# from tkinter import ttk
 from random import randint
 
 def menu():     
@@ -98,6 +96,7 @@ def menu():
         def direction():
             dir.config(text = "This password cracking tool uses dictionary attack\n"
                     "It will only find password which is in the PassWordList.txt")
+            ins.config(text ="Click browse for locked zip file to crack your locked zip file password.\n")
                 
         def extractfile(zfile,password):
             try:
@@ -118,10 +117,10 @@ def menu():
             filename = fd.askopenfilename( title='Open a file',
                 initialdir='/',
                 filetypes=filetypes)
-                
+            
             showinfo(
                 title='Selected File',
-                message=filename
+                message= ("Click ok if the correct file path is shown.\n",filename)
                 )
             zfile = zipfile.ZipFile(filename, 'r')
             passfile= open('PasswordList.txt')
@@ -145,6 +144,7 @@ def menu():
         #Clear screen then call menu function/method
         def goback():
             dir.destroy()
+            ins.destroy()
             lbl.destroy()
             pswd.destroy()
             button_checkpass.destroy()
@@ -159,6 +159,8 @@ def menu():
         
         dir = tk.Label(root, text = "",font=("Arial",20),bd=0,bg="systembuttonface")
         dir.pack(pady=20)
+        ins = tk.Label(root, text = "",font=("Arial",14),bd=0,bg="systembuttonface")
+        ins.pack(pady=20)
 
         direction()
         
