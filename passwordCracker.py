@@ -25,7 +25,7 @@ def extractfile(zfile,password):
         print('Wrong password')
         return
 
-def checkpass():
+def main():
     #Label frame
     lf = LabelFrame(root,text="Enter the locked zip file name: \n"
                     "Please include extension which is .zip"
@@ -47,7 +47,7 @@ def checkpass():
         message=filename
     )
     zfile = zipfile.ZipFile(filename, 'r')
-    passfile= open('PasswordList.txt')
+    passfile= open('PasswordList.txt', errors='ignore')
     for line in passfile.readlines():
         password = line.strip('\n')
         guess = extractfile(zfile,password)
@@ -59,7 +59,7 @@ def checkpass():
             pswd.insert(0,password)
         
 if __name__=='__main__':
-    checkpass()
+    main()
     
 #Execute Tkinter
 root.mainloop()
