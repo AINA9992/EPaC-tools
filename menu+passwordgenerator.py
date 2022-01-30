@@ -91,47 +91,86 @@ def menu():
     ####################
     # PASSWORD CRACKER #
     ####################
-    def extractfile(zfile,password):
-        try:
-            zfile.extractall(pwd=bytes(password, 'utf-8'))
-            return password
-        except:
-            print('Wrong password')
-            return
-
     def passwordCracker():
-        #Label frame
-        lf = LabelFrame(root,text="Enter the locked zip file name: \n"
-                                "Please include extension which is .zip"
-                                " at the end of the file name): ")
-        lf.pack(pady=20)
-            
-        # show the open file dialog
-        filetypes = (
-            ('zip files', '*.zip'),
-            ('All files', '*.*')
-        )
-            
-        filename = fd.askopenfilename( title='Open a file',
-            initialdir='/',
-            filetypes=filetypes)
-            
-        showinfo(
-            title='Selected File',
-            message=filename
+        
+        def extractfile(zfile,password):
+            try:
+                zfile.extractall(pwd=bytes(password, 'utf-8'))
+                return password
+            except:
+                print('Wrong password')
+                return
+  
+        def checkpass():
+            # show the open file dialog
+            filetypes = (
+                ('zip files', '*.zip'),
+                ('All files', '*.*')
             )
-        zfile = zipfile.ZipFile(filename, 'r')
-        passfile= open('PasswordList.txt')
-        for line in passfile.readlines():
-            password = line.strip('\n')
-            guess = extractfile(zfile,password)
-            if guess:
-                print('Your password = ' + password)
-                pswd = Entry(root,text='',font=("Arial",20),bd=0,bg="systembuttonface")
-                pswd.pack(pady=20)
-                #Entry box to display output password that has been generated
-                pswd.insert(0,password)
-    
+                
+            filename = fd.askopenfilename( title='Open a file',
+                initialdir='/',
+                filetypes=filetypes)
+                
+            showinfo(
+                title='Selected File',
+                message=filename
+                )
+            zfile = zipfile.ZipFile(filename, 'r')
+            passfile= open('PasswordList.txt')
+            for line in passfile.readlines():
+                password = line.strip('\n')
+                guess = extractfile(zfile,password)
+                if guess:
+                    print('Your password = ' + password)
+                    #Display password
+                    pswd.insert(0,password)
+                    lbl.config(text = "Your locked zip file password: ") #+password)
+        # #Copy generated password to clipboard
+        # def copypass():
+        #     #Clear the clipboard
+        #     root.copypass_clear()
+
+        #     #compy to clipboard
+        #     root.copypass_append(pswd.get())
+            
+        #Clear screen then call menu function/method
+        def goback():
+            lbl.destroy()
+            pswd.destroy()
+            button_checkpass.destroy()
+            #button_copypass.destroy()
+            button_goback.destroy()
+            menu()
+            
+        #Clear screen by remove buttons and label
+        l_name.destroy()
+        button_pwCr.destroy()
+        button_genPw.destroy()
+        
+        # Label Creation
+        lbl = tk.Label(root, text = "",font=("Arial",20),bd=0,bg="systembuttonface")
+        lbl.pack(pady=20)
+        
+        #Entry box to display output password
+        pswd = Entry(root,text=' ',font=("Arial",20),bd=0,bg="systembuttonface")
+        pswd.pack(pady=20)
+        
+        #Button to check for password
+        button_checkpass = Button(root,text="Browse for locked zip file",command=checkpass)
+        button_checkpass.config(width=20,height=3,font=("Arial",10),bg="light blue")
+        button_checkpass.pack(pady=5)
+
+        # #Button copy the output of generated password
+        # button_copypass = Button(root,text="Copy password to Clipboard",command=copypass)
+        # button_copypass.config(width=20,height=3,font=("Arial",10),bg="light blue")
+        # button_copypass.pack(pady=5)
+            
+        #Button to back to main
+        button_goback = Button(root,text="Back to main menu",command=goback)
+        button_goback.config(width=20,height=3,font=("Arial",10),bg="light blue")
+        button_goback.pack(padx=5)
+           
     #################
     # MENU FUNCTION #
     #################
