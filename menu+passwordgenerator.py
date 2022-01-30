@@ -92,7 +92,10 @@ def menu():
     # PASSWORD CRACKER #
     ####################
     def passwordCracker():
-        
+        def direction():
+            dir.config(text = "This password cracking tool uses dictionary attack\n"
+                    "It will only find password which is in the PassWordList.txt")
+                
         def extractfile(zfile,password):
             try:
                 zfile.extractall(pwd=bytes(password, 'utf-8'))
@@ -102,6 +105,7 @@ def menu():
                 return
   
         def checkpass():
+            pswd.delete(0,END)
             # show the open file dialog
             filetypes = (
                 ('zip files', '*.zip'),
@@ -136,6 +140,7 @@ def menu():
             
         #Clear screen then call menu function/method
         def goback():
+            dir.destroy()
             lbl.destroy()
             pswd.destroy()
             button_checkpass.destroy()
@@ -147,6 +152,11 @@ def menu():
         l_name.destroy()
         button_pwCr.destroy()
         button_genPw.destroy()
+        
+        dir = tk.Label(root, text = "",font=("Arial",20),bd=0,bg="systembuttonface")
+        dir.pack(pady=20)
+
+        direction()
         
         # Label Creation
         lbl = tk.Label(root, text = "",font=("Arial",20),bd=0,bg="systembuttonface")
