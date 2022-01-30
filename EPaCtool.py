@@ -4,7 +4,6 @@ from tkinter import ttk
 from tkinter import filedialog as fd
 from tkinter.messagebox import showinfo
 import zipfile
-import hashlib
 import random
 import string
 from random import randint
