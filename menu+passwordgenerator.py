@@ -128,8 +128,9 @@ def menu():
                 if guess:
                     print('Your password = ' + password)
                     #Display password
-                    pswd.insert(0,password)
-                    lbl.config(text = "Your locked zip file password: ") #+password)
+                    lbl.config(text = "Your locked zip file password:" +password)
+                    #pswd.insert(0,password)
+                    
         # #Copy generated password to clipboard
         # def copypass():
         #     #Clear the clipboard
